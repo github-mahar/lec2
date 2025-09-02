@@ -51,11 +51,11 @@ export default function AddToCart() {
             <p className='text-gray-500'>Your cart is empty.</p>
           ) : (
             cart.map((item) => (
-              <div key={item.id} className='flex items-center space-x-2 bg-white p-4 rounded-lg shadow-lg'>
+              <div key={item.id} className='flex items-center space-x-2 bg-white p-4 rounded-lg shadow-lg flex-wrap md:flex-nowrap'>
                 <img
                   src={item.image}
                   alt={item.title}
-                  className='w-16 h-16 rounded'
+                  className='w-16 rounded'
                 />
                 <div className='flex-1'>
                   <h3 className='text-lg font-semibold text-gray-700'>
