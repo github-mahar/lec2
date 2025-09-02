@@ -40,7 +40,7 @@ export default function AddToCart() {
   }
   return (
     <div className='min-h-screen p-10'>
-      <div className='bg-white p-4 rounded-lg shadow-lg'>
+      <div className=''>
         <div className='flex justify-between items-center mb-4'>
           <h2 className='text-xl font-bold text-gray-700'>Shopping Cart</h2>
           <span className='text-gray-500'>{cart.length} items</span>
@@ -51,7 +51,7 @@ export default function AddToCart() {
             <p className='text-gray-500'>Your cart is empty.</p>
           ) : (
             cart.map((item) => (
-              <div key={item.id} className='flex items-center space-x-2'>
+              <div key={item.id} className='flex items-center space-x-2 bg-white p-4 rounded-lg shadow-lg'>
                 <img
                   src={item.image}
                   alt={item.title}
@@ -94,7 +94,7 @@ export default function AddToCart() {
           )}
         </div>
 
-        <div className='flex justify-between items-center pt-4 border-t'>
+        <div className='flex justify-between items-center pt-4 border-t bg-white p-4 rounded-lg shadow-lg mt-6'>
           <span className='text-lg font-semibold text-gray-700'>Total</span>
           <span className='text-lg font-semibold text-gray-700'>
             $
