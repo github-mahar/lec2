@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Link, data } from 'react-router-dom';
 import Form from './components/Form.jsx';
 import ProductCards from './components/productCards.jsx';
 import ProductDetails from './components/productDetails.jsx';
+import NotFound from './components/NotFound.jsx'
+import AddToCart from './components/addToCart.jsx'
 
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
     return <h2>LogIn</h2>;
   }
   function Cart() {
-    return <h2>Cart</h2>;
+    return <AddToCart/>;
   }
   let arr = [];
   
@@ -70,7 +72,6 @@ function App() {
         logo="/store-logo.png"
         />
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/features" element={<Features />} />
@@ -78,6 +79,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound/>} />
+          <Route path="/" element={<Home />} />
         </Routes>
     </div>
 

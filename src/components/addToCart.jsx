@@ -1,25 +1,109 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function addToCart(product) {
-        const existingCart = JSON.parse(localStorage.getItem('Cart')) || [];
-        existingCart.push(product);
-        localStorage.setItem('Cart', JSON.stringify(existingCart));
-        console.log("Product added to cart:", product);
+export default function AddToCart() {
+  const [cart, setCart] = useState([])
 
-        return(
-            <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-800 dark:border-neutral-700" role="alert" tabindex="-1" aria-labelledby="hs-toast-success-example-label">
-    <div class="flex p-4">
-      <div class="shrink-0">
-        <svg class="shrink-0 size-4 text-teal-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
-        </svg>
-      </div>
-      <div class="ms-3">
-        <p id="hs-toast-success-example-label" class="text-sm text-gray-700 dark:text-neutral-400">
-          This is a success message.
-        </p>
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || []
+    setCart(storedCart)
+  }, [])
+
+
+    function updateCart(updatedCart) {
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+  }
+
+
+  function handleRemove(id) {
+    const updatedCart = cart.filter(item => item.id !== id)
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+  }
+
+
+    function handleIncrease(id) {
+    const updatedCart = cart.map(item =>
+      item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+    )
+    updateCart(updatedCart)
+  }
+
+
+  function handleDecrease(id) {
+    const updatedCart = cart
+      .map(item =>
+        item.id === id ? { ...item, quantity: (item.quantity || 1) - 1 } : item
+      )
+      .filter(item => item.quantity > 0) // remove if quantity becomes 0
+    updateCart(updatedCart)
+  }
+  return (
+    <div className='min-h-screen p-10'>
+      <div className='bg-white p-4 rounded-lg shadow-lg'>
+        <div className='flex justify-between items-center mb-4'>
+          <h2 className='text-xl font-bold text-gray-700'>Shopping Cart</h2>
+          <span className='text-gray-500'>{cart.length} items</span>
+        </div>
+
+        <div className='space-y-4'>
+          {cart.length === 0 ? (
+            <p className='text-gray-500'>Your cart is empty.</p>
+          ) : (
+            cart.map((item) => (
+              <div key={item.id} className='flex items-center space-x-2'>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className='w-16 h-16 rounded'
+                />
+                <div className='flex-1'>
+                  <h3 className='text-lg font-semibold text-gray-700'>
+                    {item.title}
+                  </h3>
+                  <p className='text-gray-500'>${item.price}</p>
+                  <span className='text-gray-500'>
+                    Quantity: {item.quantity}
+                  </span>
+                </div>
+                <div className='text-lg font-semibold text-gray-700'>
+                  ${(item.price * (item.quantity || 1)).toFixed(2)}
+                  <div>
+                  <button
+                    className='mt-2 px-2 py-1 bg-green-500 hover:bg-green-700 text-white rounded'
+                    onClick={() => handleIncrease(item.id)}
+                  >
+                    +
+                  </button>
+                    <button
+                      className='ml-2 mt-2 px-2 py-1 bg-red-500 hover:bg-red-700 text-white rounded'
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      Remove
+                    </button>
+                  <button
+                    className='mt-2 px-2 py-1 bg-yellow-500 hover:bg-yellow-700 text-white rounded ml-2'
+                    onClick={() => handleDecrease(item.id)}
+                  >
+                    -
+                  </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        <div className='flex justify-between items-center pt-4 border-t'>
+          <span className='text-lg font-semibold text-gray-700'>Total</span>
+          <span className='text-lg font-semibold text-gray-700'>
+            $
+            {cart
+              .reduce((total, item) => total + item.price * (item.quantity || 1), 0)
+              .toFixed(2)}
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-        )
+  )
 }

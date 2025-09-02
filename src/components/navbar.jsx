@@ -9,7 +9,7 @@ export default function Navbar({ logo }) {
       <nav className="flex justify-between items-center w-[92%] mx-auto relative">
         {/* Logo */}
         <div>
-          <img className="w-16 cursor-pointer" src={logo} alt="logo" />
+          <a href="/"><img className="w-16 cursor-pointer" src={logo} alt="logo" /></a>
         </div>
 
         {/* Nav Links */}
