@@ -10,11 +10,11 @@ export default function Navbar({ logo }) {
   const { theme, handleToggleTheme } = useContext(themeToggler);
 
   return (
-    <header className="bg-white shadow">
+    <header className={`bg-background shadow 1px solid #e0dbd3 py-4 mb-8 ${theme}`}>
       <nav className="flex justify-between items-center w-[92%] mx-auto relative">
         {/* Logo */}
         <div>
-          <a href="/"><img className="w-16 cursor-pointer" src={logo} alt="logo" /></a>
+          <h3 className="w-16 cursor-pointer text-text text-3xl">LOGO</h3>
         </div>
 
         {/* Nav Links */}
@@ -26,27 +26,27 @@ export default function Navbar({ logo }) {
             md:max-h-none md:py-0 md:flex`}
         >
           <li>
-            <Link to="/" className="hover:text-gray-500">
+            <Link to="/" className="hover:text-gray-500 text-text">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className="hover:text-gray-500">
+            <Link to="/about" className="hover:text-gray-500 text-text">
               About
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-gray-500">
+            <Link to="/contact" className="hover:text-gray-500 text-text">
               Contact
             </Link>
           </li>
           <li>
-            <Link to="/products" className="hover:text-gray-500">
+            <Link to="/products" className="hover:text-gray-500 text-text">
               Products
             </Link>
           </li>
           <li>
-            <Link to="/features" className="hover:text-gray-500">
+            <Link to="/features" className="hover:text-gray-500 text-text">
               Features
             </Link>
           </li>
@@ -54,15 +54,16 @@ export default function Navbar({ logo }) {
 
         {/* Buttons + Hamburger */}
         <div className="flex items-center gap-6">
-          <button onClick={handleToggleTheme}>
-            <i className="fa-solid fa-sun"></i>
+          <button onClick={handleToggleTheme} className="bg-buttonbg px-5 py-2 rounded-full">
+            <i onClick={() => setOpen(!open)}
+            className={`fa-solid ${open ? "fa-moon" : "fa-sun"} text-2xl cursor-pointer`}></i>
           </button>
             <Link to="/cart">
-          <button className="bg-gray-200 px-5 py-2 rounded-full hover:bg-gray-300">
+          <button className="bg-buttonbg px-5 py-2 rounded-full ">
               <i className="fa-solid fa-cart-shopping"></i>
           </button>
             </Link>
-          <button className="bg-[#ac61ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
+          <button className="bg-primary text-buttontext px-5 py-2 rounded-full">
             <Link to="/login">Login</Link>
           </button>
 

@@ -45,7 +45,7 @@ export default function ProductCards() {
     <div className="card w-full min-h-screen gap-6 flex flex-wrap p-10 justify-center items-center">
       {products.map((product) => (
         <div
-          className="product w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl mt-4 mb-4 lg:mt-0 max-h-[512px]"
+          className="product w-60 p-2 bg-buttonbg rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl mt-4 mb-4 lg:mt-0 max-h-[512px]"
           key={product.id}
         >
           <Link to={`/product/${product.id}`} key={product.id}>
@@ -57,16 +57,16 @@ export default function ProductCards() {
               />
             </div>
             <div className="p-2">
-              <h2 className="font-bold text-lg mb-2 line-clamp-2">
+              <h2 className="font-bold text-lg mb-2 line-clamp-2 text-text">
                 {product.title}
               </h2>
             </div>
           </Link>
           <div className="p-2">
-            <span className="text-xl font-semibold">${product.price}</span>
+            <span className="text-xl font-semibold text-accent">${product.price}</span>
 
             <div className="flex items-center gap-2">
-              <span className="text-sm line-through opacity-75">
+              <span className="text-sm line-through opacity-75 text-text">
                 {(product.price * 1.1).toFixed(2)}
               </span>
               <span className="font-bold text-sm px-3 py-1 bg-yellow-300 rounded-full text-gray-600">
@@ -74,21 +74,21 @@ export default function ProductCards() {
               </span>
             </div>
 
-            <p className="text-sm text-gray-600 line-clamp-3 mt-2 mb-2">
+            <p className="text-sm text-text line-clamp-3 mt-2 mb-2">
               {product.description}
             </p>
           </div>
           <div className="flex items-center justify-center gap-2 mb-3">
-            <button className="px-3 py-1 rounded-lg bg-blue-400 hover:bg-blue-500 font-semibold cursor-pointer">
+            <button className="px-3 py-1 rounded-lg bg-primary text-buttontext font-semibold cursor-pointer">
               Buy Now
             </button>
             <button
-              className="px-3 py-1 rounded-lg bg-gray-300 hover:bg-gray-500 cursor-pointer"
+              className="px-3 py-1 rounded-lg bg-secondary cursor-pointer"
               onClick={() => handleAddToCart(product)}
             >
               <i className="fa-solid fa-cart-shopping w-6"></i>
             </button>
-            <button className="px-3 py-1 rounded-lg bg-gray-300 hover:bg-gray-500 cursor-pointer">
+            <button className="px-3 py-1 rounded-lg bg-secondary cursor-pointer">
               <i className="fa-solid fa-heart w-6 "></i>
             </button>
           </div>

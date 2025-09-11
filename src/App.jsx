@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './App.css'
 import Profile from './components/profile.jsx'
 import Navbar from './components/navbar.jsx'
@@ -9,25 +9,26 @@ import ProductCards from './components/productCards.jsx';
 import ProductDetails from './components/productDetails.jsx';
 import NotFound from './components/NotFound.jsx'
 import AddToCart from './components/addToCart.jsx'
-import { ThemeProvider } from './Context/ThemeToggler.jsx';
+import { themeToggler } from './Context/ThemeToggler.jsx';
 
 
 function App() {
+   const { theme, handleToggleTheme } = useContext(themeToggler);
   function Home() {
     const GetData = (data) => {
       console.log("Data from child:", data);
     };
     return (
       <>
-      <Profile 
+      {/* <Profile 
         name="Usama"
         class="BSCS"
         gender="Male"
-      />
+      /> */}
       <div className="img-container">
         <ImgContainer/>
       </div>
-        <Form onSubmit={GetData} />
+        {/* <Form onSubmit={GetData} /> */}
 
       </>
     )
@@ -64,15 +65,11 @@ function App() {
   //   .catch(error => console.error('Error:', error));
 
   return (
-    <ThemeProvider>
+    
       <BrowserRouter>
-        <div className=''>
-        
-
-          <Navbar
-        
-          logo="/store-logo.png"
-          />
+      <div className={`${theme}`}>
+        <div className={`bg-background min-h-lvh font-[Poppins]`}>
+          <Navbar logo="/store-logo.png"/>
           <Routes>
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
@@ -84,10 +81,10 @@ function App() {
             <Route path="*" element={<NotFound/>} />
             <Route path="/" element={<Home />} />
           </Routes>
+        </div>
       </div>
 
     </BrowserRouter>
-  </ThemeProvider>
   )
 }
 

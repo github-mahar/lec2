@@ -1,3 +1,4 @@
+@config "../tailwind.config.js";
 @import "tailwindcss";
 .product{
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
@@ -5,3 +6,25 @@
 button{
     cursor: pointer;
 }
+@layer base {
+  :root {
+    --text: #181206;
+    --background: #faf4eb;
+    --primary: #795b20;
+    --secondary: #7aa3dc;
+    --accent: #6e30b5;
+    --button-bg: #d3dbe6;
+    --button-text: #e6dccc;
+  }
+  .dark {
+    --text: #f9f3e7;
+    --background: #161006;
+    --primary: #dfc187;
+    --secondary: #234b83;
+    --accent: #884acf;
+    --button-bg: #18202b;
+    --button-text: #140e05;
+  }
+}
+
+
