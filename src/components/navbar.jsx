@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+import { themeToggler } from "../Context/ThemeToggler.jsx";
+
+
 
 export default function Navbar({ logo }) {
   const [open, setOpen] = useState(false);
+  const { theme, handleToggleTheme } = useContext(themeToggler);
 
   return (
     <header className="bg-white shadow">
@@ -49,6 +54,9 @@ export default function Navbar({ logo }) {
 
         {/* Buttons + Hamburger */}
         <div className="flex items-center gap-6">
+          <button onClick={handleToggleTheme}>
+            <i className="fa-solid fa-sun"></i>
+          </button>
             <Link to="/cart">
           <button className="bg-gray-200 px-5 py-2 rounded-full hover:bg-gray-300">
               <i className="fa-solid fa-cart-shopping"></i>

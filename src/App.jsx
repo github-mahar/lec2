@@ -9,6 +9,7 @@ import ProductCards from './components/productCards.jsx';
 import ProductDetails from './components/productDetails.jsx';
 import NotFound from './components/NotFound.jsx'
 import AddToCart from './components/addToCart.jsx'
+import { ThemeProvider } from './Context/ThemeToggler.jsx';
 
 
 function App() {
@@ -63,28 +64,30 @@ function App() {
   //   .catch(error => console.error('Error:', error));
 
   return (
-    <BrowserRouter>
-      <div className=''>
+    <ThemeProvider>
+      <BrowserRouter>
+        <div className=''>
         
 
-        <Navbar
+          <Navbar
         
-        logo="/store-logo.png"
-        />
-        <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<NotFound/>} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-    </div>
+          logo="/store-logo.png"
+          />
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound/>} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+      </div>
 
-  </BrowserRouter>
+    </BrowserRouter>
+  </ThemeProvider>
   )
 }
 
