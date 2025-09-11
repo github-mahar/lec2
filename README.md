@@ -1,12 +1,88 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛒 lec2: React E-Commerce Demo
 
-Currently, two official plugins are available:
+This is a modern e-commerce demo application built with **React**, **Vite**, and **Tailwind CSS**. It features product browsing, shopping cart, theme toggling, and responsive design. Products are fetched from [Fake Store API](https://fakestoreapi.com/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- ⚡️ Fast development with Vite
+- 🎨 Customizable light/dark theme (toggle in navbar)
+- 🛍️ Product listing and details (from Fake Store API)
+- 🛒 Shopping cart with add/remove/update quantity
+- 🔄 Persistent cart (localStorage)
+- 📦 Buy Now and Add to Cart actions
+- 🚀 Responsive UI with Tailwind CSS
+- 🔔 Toast notifications (react-toastify)
+- 🧭 Routing with React Router
+- 404 Not Found page
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Prerequisites
+- Node.js (v18+ recommended)
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+App runs at [http://localhost:5173](http://localhost:5173) by default.
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+	App.jsx            # Main app component, routing
+	main.jsx           # Entry point, ThemeProvider, ToastContainer
+	components/        # UI components (navbar, productCards, addToCart, etc.)
+	Context/           # ThemeToggler context
+	assets/            # Static assets (svg, etc.)
+	App.css, index.css # Styles (Tailwind + custom)
+public/
+	nature*.jpg        # Demo images
+	store-logo.png     # Store logo
+	vite.svg           # Vite logo
+```
+
+## Main Dependencies
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/)
+- [ESLint](https://eslint.org/)
+
+## Customization
+
+- **Theme**: Edit colors in `src/index.css` and `tailwind.config.js`.
+- **Products**: Fetched from [Fake Store API](https://fakestoreapi.com/).
+- **Logo/Images**: Replace files in `public/`.
+
+## License
+
+This project is for educational/demo purposes.
